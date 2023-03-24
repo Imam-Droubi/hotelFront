@@ -1,0 +1,89 @@
+.admin-pages-container{
+  background-color: var(--clr-silver);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+.admin-pages-sidebar{
+  height: 100vh;
+  width: 18%;
+  background-color: var(--clr-darkest);
+}
+.side-bar-container{
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.admin-pages-content{
+  width: 82%;
+}
+
+.users-content-container{
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem;
+}
+@media screen and (max-width:992px) {
+  .admin-pages-sidebar{
+    display: none;
+  }
+  .admin-pages-content{
+    width: 100%;
+  }
+  .users-content-container{
+    width: 95%;
+  }
+}
+.users-page-top{
+  display: flex;
+  justify-content: space-between;
+}
+.users-page-top li a{
+  color: var(--clr-darkest);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.users-content{
+  margin-top: 3rem;
+  width: 100%;
+
+}
+.table-container{
+  max-height: 60vh;
+  overflow: scroll;
+}
+
+.control-buttons{
+  width: 100%;
+  display: flex;
+  justify-content:flex-end;
+  margin-top: 2rem;
+}
+.control-buttons button{
+  color: white;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+.control-buttons button:disabled{
+  background-color: var(--clr-grey);
+  cursor: default;
+}
+.cancel-button{
+  background-color: var(--clr-grey);
+}
+.cancel-button:hover{
+  background-color: #8198a6;
+}
+.save-changes-button{
+  background-color: var(--clr-darkest);
+}
+.save-changes-button:hover{
+  background-color: var(--clr-light);
+}
