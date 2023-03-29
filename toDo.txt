@@ -3,4 +3,7 @@ hamburger menu in the admin pages
 ======== Back ===============
 1- add highest price to the hotel 
 2- add hotelID to the room 
-3- 
+3- add dashboard "adding" feature
+4- add transitions 
+5- popup for reservation 
+6- humburger menue 

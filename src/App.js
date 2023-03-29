@@ -7,6 +7,7 @@ import AdminUsers from './adminPages/AdminUsers/AdminUsers';
 import AdminHotels from './adminPages/AdminHotels/AdminHotels';
 import AdminRooms from './adminPages/AdminRooms/AdminRooms';
 import Search from './pages/SearchPage/Search';
+import HotelInfo from './pages/HotelnfoPage/HotelInfo';
 function App() {
   return (
     <Routes>
@@ -14,6 +15,7 @@ function App() {
       <Route path='/register' element={<Register/>}></Route>
       <Route path='/login' element={<Login/>}></Route>
       <Route path='/search' element={<Search/>}></Route>
+      <Route path='/hotel/:id' element={<HotelInfo/>}></Route>
       <Route path='/admin/Users' element={<AdminUsers/>}></Route>
       <Route path='/admin/Hotels' element={<AdminHotels/>}></Route>
       <Route path='/admin/Rooms' element={<AdminRooms/>}></Route>

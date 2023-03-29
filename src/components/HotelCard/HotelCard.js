@@ -10,11 +10,11 @@ function HotelCard({hotel}){
     <>
       <div className="hotel-card-container">
           <div className="hotel-card-image">
-            <Link><img src={hotel.photos[0]} /></Link>
+            <Link to={"/hotel/" + hotel.__id}><img src={hotel.photos[0]} /></Link>
           </div>
           <div className="hotel-card-info">
             <div className="main-info">
-              <h2 className="hotel-title"><Link>{hotel.title}</Link></h2>
+              <h2 className="hotel-title"><Link to={"/hotel/" + hotel.__id}>{hotel.title}</Link></h2>
               <p className="hotel-address"><GoLocation/>{hotel.distance}m from downtown</p>
               <p className="hotel-description">{hotel.desc.slice(0,Math.min(hotel.desc.length , 90))}{hotel.desc.length > 100?"...":""}</p>
             </div>
@@ -35,7 +35,7 @@ function HotelCard({hotel}){
                 <p className="reviews"><span>23</span> reviews</p>
               </div>
               <h3 className="hotel-cheapest-price"><span>{hotel.cheapestPrice}</span>$/night</h3>
-              <button className="check-availability-button">Check availability</button>
+              <Link to={"/hotel/" + hotel.__id} className="check-availability-button">Check availability</Link>
             </div>
           </div>
       </div>

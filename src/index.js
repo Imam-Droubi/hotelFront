@@ -11,6 +11,7 @@ import AdminUsers from './adminPages/AdminUsers/AdminUsers';
 import AdminHotels from './adminPages/AdminHotels/AdminHotels';
 import AdminRooms from './adminPages/AdminRooms/AdminRooms';
 import Search from './pages/SearchPage/Search';
+import HotelInfo from './pages/HotelnfoPage/HotelInfo';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

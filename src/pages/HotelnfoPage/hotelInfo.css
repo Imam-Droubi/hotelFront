@@ -1,0 +1,122 @@
+.hotel-info-page{
+  width: 100vw;
+}
+.hotel-info-top-bar{
+  width: 100%;
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  
+  background-color: var(--clr-darkest);
+}
+.hotel-info-top-contianer{
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hotel-info-body{
+  width: 80%;
+  margin: auto;
+}
+.hotel-info-body-top{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem 0;
+  width: 100%;
+  border-bottom: 0.2rem solid var(--clr-darkest);
+}
+.hotel-info-title{
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--clr-darkest);
+}
+.hotel-info-address{
+  color: var(--clr-dark);
+}
+.hotel-info-photos{
+  display: flex;
+  width: 80%;
+  margin: 1rem auto;
+  justify-content: space-between;
+}
+.hotel-info-photos img{
+  border: 0.1rem solid var(--clr-darkest);
+  border-radius: 0.5rem;
+}
+.hotel-info-main-photo{
+  width: 70%;
+}
+.hotel-info-main-photo img{
+  width: 100%;
+}
+.hotel-info-side-photos{
+  width: 28%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hotel-info-side-photos img{
+  width: 80%;
+}
+
+.hotel-info-details{
+  display: flex;
+  justify-content: space-between;
+}
+.hotel-info-description{
+  width: 69%;
+}
+.hotel-info-description h2{
+  color: var(--clr-darkest);
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+.hotel-info-description p{
+  font-size: 1rem;
+  color: var(--clr-grey);
+}
+.hotel-info-reserve-now-widget{
+  width: 25%;
+  background-color: var(--clr-darkest);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  height: max-content;
+}
+.hotel-info-reserve-now-widget h3{
+  font-size: 2rem;
+  color: white;
+  margin: 1rem 0 ;
+}
+.hotel-short-desc{
+  padding: 1rem;
+  color: white;
+}
+.hotel-reservation-price{
+  color: var(--clr-bright);
+  font-size: 1.5rem;
+  width: 100%;
+  padding-left: 1rem;
+}
+.reserve-now-button{
+  background-color: var(--clr-bright);
+  padding: 1rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+  color: white;
+  font-weight: 700;
+  margin: 1rem 0;
+  border: none;
+  cursor: pointer;
+}
+.reserve-now-button:hover{
+  background-color: var(--clr-dark);
+}
+@media screen and (max-width:992px) {
+  
+  
+}
