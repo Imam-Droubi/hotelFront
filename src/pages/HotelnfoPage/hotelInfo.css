@@ -38,7 +38,7 @@
 }
 .hotel-info-photos{
   display: flex;
-  width: 80%;
+  width: 100%;
   margin: 1rem auto;
   justify-content: space-between;
 }
@@ -60,6 +60,34 @@
 }
 .hotel-info-side-photos img{
   width: 80%;
+}
+/*
+  This is the slider part
+*/
+.slider{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.slider button{
+  padding: 1rem;
+  background-color: var(--clr-darkest);
+  color: white;
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+.slider button:hover{
+  background-color: var(--clr-light);
+}
+.slider-photo{
+  width: 80%;
+  height: 35rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .hotel-info-details{
@@ -117,6 +145,33 @@
   background-color: var(--clr-dark);
 }
 @media screen and (max-width:992px) {
-  
-  
+  .hotel-info-body{
+    width: 90%;
+  }
+  .slider button{
+    padding: 0.5rem;
+  }
+  .hotel-info-details{
+    flex-direction: column;
+  }
+  .hotel-info-description{
+    width: 100%;
+  }
+  .hotel-info-reserve-now-widget{
+    margin: 2rem 0 ;
+    width: 100%;
+  }
+  .hotel-reservation-price{
+    text-align: center;
+  }
+  .reserve-now-button{
+    width: 100%;
+    margin-bottom: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    
+  }
+  .pop-up-container{ /* reservation pop up */
+    width: 80%;
+  }
 }

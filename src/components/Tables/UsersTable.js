@@ -34,6 +34,105 @@ function UsersTable({setChanged}) {
       "country" : "Palestine",
       "address" :"Tulkarm",
       "isAdmin" : true
+    },
+    {
+      "__id" : "640cc9f3538a380d0bb41b27",
+      "fullName" : "Imam Droubi",
+      "userName" : "imam_droubi",
+      "email" : "imam.droubi@gmail.com",
+      "phoneNumber" : "0598654055",
+      "passwrod" : "testPassword",
+      "country" : "Palestine",
+      "address" :"Tulkarm",
+      "isAdmin" : true
+    },
+    {
+      "__id" : "640cc9f3538a380d0bb41b28",
+      "fullName" : "Imam Droubi",
+      "userName" : "imam_droubi",
+      "email" : "imam.droubi@gmail.com",
+      "phoneNumber" : "0598654055",
+      "passwrod" : "testPassword",
+      "country" : "Palestine",
+      "address" :"Tulkarm",
+      "isAdmin" : false
+    },
+    {
+      "__id" : "640cc9f3538a380d0bb41b29",
+      "fullName" : "Imam Droubi",
+      "userName" : "imam_droubi",
+      "email" : "imam.droubi@gmail.com",
+      "phoneNumber" : "0598654055",
+      "passwrod" : "testPassword",
+      "country" : "Palestine",
+      "address" :"Tulkarm",
+      "isAdmin" : true
+    },
+    {
+      "__id" : "640cc9f3538a380d0bb41b27",
+      "fullName" : "Imam Droubi",
+      "userName" : "imam_droubi",
+      "email" : "imam.droubi@gmail.com",
+      "phoneNumber" : "0598654055",
+      "passwrod" : "testPassword",
+      "country" : "Palestine",
+      "address" :"Tulkarm",
+      "isAdmin" : true
+    },
+    {
+      "__id" : "640cc9f3538a380d0bb41b28",
+      "fullName" : "Imam Droubi",
+      "userName" : "imam_droubi",
+      "email" : "imam.droubi@gmail.com",
+      "phoneNumber" : "0598654055",
+      "passwrod" : "testPassword",
+      "country" : "Palestine",
+      "address" :"Tulkarm",
+      "isAdmin" : false
+    },
+    {
+      "__id" : "640cc9f3538a380d0bb41b29",
+      "fullName" : "Imam Droubi",
+      "userName" : "imam_droubi",
+      "email" : "imam.droubi@gmail.com",
+      "phoneNumber" : "0598654055",
+      "passwrod" : "testPassword",
+      "country" : "Palestine",
+      "address" :"Tulkarm",
+      "isAdmin" : true
+    },
+    {
+      "__id" : "640cc9f3538a380d0bb41b27",
+      "fullName" : "Imam Droubi",
+      "userName" : "imam_droubi",
+      "email" : "imam.droubi@gmail.com",
+      "phoneNumber" : "0598654055",
+      "passwrod" : "testPassword",
+      "country" : "Palestine",
+      "address" :"Tulkarm",
+      "isAdmin" : true
+    },
+    {
+      "__id" : "640cc9f3538a380d0bb41b28",
+      "fullName" : "Imam Droubi",
+      "userName" : "imam_droubi",
+      "email" : "imam.droubi@gmail.com",
+      "phoneNumber" : "0598654055",
+      "passwrod" : "testPassword",
+      "country" : "Palestine",
+      "address" :"Tulkarm",
+      "isAdmin" : false
+    },
+    {
+      "__id" : "640cc9f3538a380d0bb41b29",
+      "fullName" : "Imam Droubi",
+      "userName" : "imam_droubi",
+      "email" : "imam.droubi@gmail.com",
+      "phoneNumber" : "0598654055",
+      "passwrod" : "testPassword",
+      "country" : "Palestine",
+      "address" :"Tulkarm",
+      "isAdmin" : true
     }
   ]);
   const [changedUsers,setChangedUsers] = useState([]);

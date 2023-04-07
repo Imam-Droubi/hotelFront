@@ -2,16 +2,14 @@
   width: 100%;
   text-align: center;
   font-size: 1rem;
-
 }
+
 th,td{
   padding: 0.5rem;
+  
 }
 .users-content table th{
   border-bottom: 0.2rem solid var(--clr-darkest);
-  position: sticky;
-  top: 0;
-  background-color: var(--clr-silver);
 }
 td{
   border-bottom: 0.1rem solid var(--clr-dark);

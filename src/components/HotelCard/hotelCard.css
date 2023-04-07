@@ -2,7 +2,7 @@
 .hotel-card-container{
   background-color: white;
   width: 100%;
-  border-radius: 1rem;
+  border-radius: 0.1rem;
   display: flex;
   padding: 1em;
   justify-content: space-between;
@@ -13,7 +13,7 @@
 .hotel-card-image{
   width: 30%;
   height: 100%;
-  border-radius: 1rem;
+  border-radius: 0.1rem;
   overflow: hidden;
 }
 

@@ -28,11 +28,12 @@
   margin-top: 2rem;
 }
 @media screen and (max-width:992px) {
-  .admin-pages-sidebar{
-    display: none;
-  }
   .admin-pages-content{
+    padding-left: 3rem;
     width: 100%;
+  }
+  .admin-pages-sidebar{
+    width: max-content;
   }
   .users-content-container{
     width: 95%;
@@ -54,13 +55,13 @@
 }
 .table-container{
   max-height: 60vh;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .control-buttons{
   width: 100%;
   display: flex;
-  justify-content:flex-end;
+  justify-content:space-between;
   margin-top: 2rem;
 }
 .control-buttons button{
@@ -70,6 +71,7 @@
   font-size: 0.8rem;
   margin-left: 1rem;
   cursor: pointer;
+  border: none;
 }
 .control-buttons button:disabled{
   background-color: var(--clr-grey);
@@ -81,9 +83,26 @@
 .cancel-button:hover{
   background-color: #8198a6;
 }
+.add-new-button{
+  background-color: var(--clr-dark);
+}
+.add-new-button:hover{
+  background-color: var(--clr-light);
+}
 .save-changes-button{
   background-color: var(--clr-darkest);
 }
 .save-changes-button:hover{
   background-color: var(--clr-light);
+}
+
+
+/* humburger menu stuff */
+.humburger-controller{
+  position: absolute;
+  top: 2.1rem;
+  left: 1rem;
+  font-size: 2rem;
+  color: var(--clr-darkest);
+  cursor: pointer;
 }

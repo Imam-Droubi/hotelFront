@@ -8,6 +8,7 @@
 .search-page-sidebar{
   width: 25%;
   background-color: var(--clr-darkest);
+  min-height: 100vh;
 }
 .search-page-side-bar-container{
   width: 90%;
@@ -31,11 +32,15 @@
   height: 100%;
 }
 @media screen and (max-width:992px) {
-  .search-page-sidebar{
-    display: none;
-  }
   .search-page-content{
     width: 100%;
+  }
+  .search-page-title{
+    margin-left: 3rem;
+  }
+  .search-page-sidebar{
+    width: max-content;
+    min-height: 100vh;
   }
   .search-page-content-container{
     width: 95%;

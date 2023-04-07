@@ -3,12 +3,27 @@ import { GoLocation } from "react-icons/go";
 import Logo from "../../components/Logo/Logo";
 import UserTop from "../../components/NavBar/UserTop";
 import ReservePopUp from "../../components/ReservePopUp/ReservePopUp";
+import {AiOutlineArrowLeft,AiOutlineArrowRight} from "react-icons/ai"
 import "./hotelInfo.css"
 function HotelInfo(){
   const link = window.location.href.split("/") ;
   const id = link[link.length-1];
+  const [currentPhotoIndex , setCurrentPhotoIndex] = useState(0);
+  const photos = [
+    "https://plus.unsplash.com/premium_photo-1673970474453-7c49815647ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+    "https://images.unsplash.com/photo-1680668414134-b8ad7140b8dd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    "https://images.unsplash.com/photo-1564419320461-6870880221ad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"]
   const [showPopUp , setShowPopUp] = useState(false);
-
+  const handleRightSliding = ()=>{
+    const size = photos.length;
+    setCurrentPhotoIndex((currentPhotoIndex + 1)%size);
+  }
+  const handleleftSliding = ()=>{
+    const size = photos.length;
+    if(currentPhotoIndex === 0){
+      setCurrentPhotoIndex(size-1);
+    }else setCurrentPhotoIndex(currentPhotoIndex-1);
+  }
   useEffect(()=>{
   },[])
   return(
@@ -27,14 +42,21 @@ function HotelInfo(){
             <div className="hotel-info-address"><GoLocation/> 24 - Jaffa Street, 2199 Ramallah</div>
           </div>
           <div className="hotel-info-photos">
-            <div className="hotel-info-main-photo">
+            <div className="slider" >
+              <button className="left-slider-button" onClick={()=> handleRightSliding()} ><AiOutlineArrowLeft/></button>
+              <div className="slider-photo">
+                <img src={photos[currentPhotoIndex]}/>
+              </div>
+              <button className="right-slider-button" onClick={()=> handleleftSliding()}><AiOutlineArrowRight/></button>
+            </div>
+            {/* <div className="hotel-info-main-photo">
               <img src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"/>
             </div>
             <div className="hotel-info-side-photos">
               <img src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"/>
               <img src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"/>
               <img src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"/>
-            </div>
+            </div> */}
           </div>
           <div className="hotel-info-details">
             <div className="hotel-info-description">
@@ -53,7 +75,7 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
             <div className="hotel-info-reserve-now-widget">
               <h3>Reserve Now!</h3>
               <p className="hotel-short-desc">Centrally located in the heart of Ramallah, perfect for solo travellers.</p>
-              <h4 className="hotel-reservation-price">$300(2 Nights)</h4>
+              <h4 className="hotel-reservation-price">$300 (2 Nights)</h4>
               <button className="reserve-now-button" onClick={()=>setShowPopUp(!showPopUp)}>Reserve Now</button>
             </div>
           </div>

@@ -5,6 +5,8 @@ import SideNavAdmin from "../../components/SideNavAdmin/SideNavAdmin";
 import HotelCard from "../../components/HotelCard/HotelCard";
 import "./search.css"
 import Filters from "../../components/Fitlers/Filters";
+import { AiOutlineMenu } from "react-icons/ai";
+import HumburgerSearch from "../../components/HumburgerSearch/HumburgerSearh";
 function Search(){
   const [hotels, setHotels] = useState([
     {
@@ -87,13 +89,44 @@ function Search(){
     if(filters.maxPrice&& filters.maxPrice < hotel.cheapestPrice) return false;
     return true;
   };
+  // humburger stuff 
+  const [windowSize , setWindowSize] = useState(window.innerWidth);
+  const [menuShown , setMenuShown] = useState(false);
+  const  showHumMenu = ()=>{
+    setMenuShown(true);
+    let container = document.getElementsByClassName("search-page-sidebar")[0];
+    let sideContainer = document.getElementsByClassName("search-page-side-bar-container")[0];
+    container.classList.add("humburger");
+    sideContainer.classList.add("humburger-container")
+  }
+  const closeHumMenue = ()=>{
+    setMenuShown(false);
+    let container = document.getElementsByClassName("search-page-sidebar")[0];
+    let sideContainer = document.getElementsByClassName("search-page-side-bar-container")[0];
+    container.classList.remove("humburger");
+    sideContainer.classList.remove("humburger-container")
+  }
+  window.addEventListener("resize", ()=>{
+    setWindowSize(window.innerWidth);
+  })
+  
   return(
     <>
       <div className="search-page-container">
+      {windowSize <= 992 && !menuShown?<AiOutlineMenu onClick={()=> showHumMenu()} className="humburger-controller"/> : null}
         <div className="search-page-sidebar">
           <div className="search-page-side-bar-container">
-            <Logo/>
-            <Filters setFilters={setFilters}/>
+            {windowSize > 992 ?
+              <>
+              <Logo/>
+              <Filters setFilters={setFilters}/>
+              </>
+              :
+              <>
+              <HumburgerSearch menuShown = {menuShown} closeHumMenue = {closeHumMenue} setFilters = {setFilters}/>
+              </>
+            }
+            
           </div>
         </div>
         <div className="search-page-content">
