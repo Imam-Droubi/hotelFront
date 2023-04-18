@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Logo from "../../components/Logo/Logo";
 import UserTop from "../../components/NavBar/UserTop";
 import SideNavAdmin from "../../components/SideNavAdmin/SideNavAdmin";
@@ -7,88 +7,21 @@ import "./search.css"
 import Filters from "../../components/Fitlers/Filters";
 import { AiOutlineMenu } from "react-icons/ai";
 import HumburgerSearch from "../../components/HumburgerSearch/HumburgerSearh";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import useFetch from "../../hooks/useFetch";
 function Search(){
-  const [hotels, setHotels] = useState([
-    {
-      "__id" : "640c72a148c5e882393b8d8b",
-      "name" : "First Hotel",
-      "type" : "hotel",
-      "city" : "Ramallah",
-      "address" : "somewhere",
-      "distance" : 200,
-      "desc" : "Feel Like Home!,Feel Like Home!,Feel Like Home!,Feel Like Home!,Feel Like Home!,Feel Like Home!,Feel Like Home!,Feel Like Home!,Feel Like Home!,Feel Like Home!",
-      "title" : "Hotel Title",
-      "rating" : 2,
-      "cheapestPrice" : 100,
-      "highestPrice" : 500,
-      "featured" : false,
-      "photos": [
-        "https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
-        "https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-      ],
-      "rooms" : [
-        "640c72a148c5e882393b8d8b",
-        "640c72a148c5e882393b8d9b"
-      ]
-    },
-    {
-      "__id" : "640c72a148c5e882393b8d9b",
-      "name" : "Second Hotel",
-      "type" : "hotel",
-      "city" : "London",
-      "address" : "somewhere",
-      "distance" : 200,
-      "desc" : "Feel Like Home!",
-      "title" : "Hotel Title",
-      "rating" : 2,
-      "cheapestPrice" : 150,
-      "highestPrice" : 400,
-      "featured" : false,
-      "photos": [
-        "https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
-        "https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-      ],
-      "rooms" : [
-        "640c72a148c5e882393b8d8b",
-        "640c72a148c5e882393b8d9b"
-      ]
-    },
-    {
-      "__id" : "640c72a148c5e882393b8d9c",
-      "name" : "Third Hotel",
-      "type" : "hotel",
-      "city" : "New York",
-      "address" : "somewhere",
-      "distance" : 200,
-      "desc" : "Feel Like Home!",
-      "title" : "Hotel Title",
-      "rating" : 4,
-      "cheapestPrice" : 200,
-      "highestPrice" : 700,
-      "featured" : true,
-      "photos": [
-        "https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
-        "https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-      ],
-      "rooms" : [
-        "640c72a148c5e882393b8d8b",
-        "640c72a148c5e882393b8d9b"
-      ]
-    }
-  ]);
-  const [filters, setFilters] = useState({});
-  const isValid = (hotel)=>{
-    if(filters.city && filters.city != hotel.city) return false;
-    if(filters.minPrice&& filters.minPrice > hotel.highestPrice) return false;
-    if(filters.maxPrice&& filters.maxPrice < hotel.cheapestPrice) return false;
-    return true;
-  };
+  const {user} = useContext(AuthContext);
+  const [filters, setFilters] = useState({
+    city:undefined,
+    checkIn : undefined,
+    checkOut :undefined,
+    minPrice : undefined,
+    maxPrice : undefined,
+    persons:undefined
+  });
+  const {data : hotels, loading , error, reFetch} = useFetch(`/hotels?destination=${filters.city}&min=${filters.minPrice}&max=${filters.maxPrice}`);
+  const navigate = useNavigate();
   // humburger stuff 
   const [windowSize , setWindowSize] = useState(window.innerWidth);
   const [menuShown , setMenuShown] = useState(false);
@@ -106,9 +39,13 @@ function Search(){
     container.classList.remove("humburger");
     sideContainer.classList.remove("humburger-container")
   }
-  window.addEventListener("resize", ()=>{
-    setWindowSize(window.innerWidth);
-  })
+  useEffect(()=>{
+    window.addEventListener("resize", ()=>{
+      setWindowSize(window.innerWidth);
+    })
+    if(!user)navigate("/login")
+    
+  },[user])
   
   return(
     <>
@@ -119,7 +56,7 @@ function Search(){
             {windowSize > 992 ?
               <>
               <Logo/>
-              <Filters setFilters={setFilters}/>
+              <Filters filters = {filters} setFilters={setFilters} reFetch = {reFetch}/>
               </>
               :
               <>
@@ -133,13 +70,13 @@ function Search(){
           <div className="search-page-content-container">
             <div className="search-page-top">
               <h1 className="search-page-title">Choose a Hotel!</h1>
-              <UserTop items={["imam_droubi" ,"logout"]}/>
+              {user && <UserTop items={[user.userName ,"Logout"]}/>}
             </div>
             <div className="search-content">
               {
+                loading? "Loading..." :
                 hotels.map((hotel,index)=>{
-                  console.log(isValid(hotel));
-                  if(isValid(hotel)) return <HotelCard key={index} hotel={hotel}/>
+                  return <HotelCard key={index} hotel={hotel}/>
                 })
               }
             </div>

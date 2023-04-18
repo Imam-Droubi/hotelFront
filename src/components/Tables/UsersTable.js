@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./tables.css"
+import {TiDelete} from "react-icons/ti";
 function UsersTable({setChanged}) {
   const [users, setUsers] = useState([
     {
@@ -142,7 +143,14 @@ function UsersTable({setChanged}) {
     if(changedUsers.indexOf(index) === -1){
       setChangedUsers([...changedUsers , index]);
     }
-
+  }
+  function handleChangedInput(event,attr, index){
+    let cUser = users.at(index);
+    cUser[attr] = attr === "isAdmin" ? event.target.value === "admin" ? true : false  : event.target.value ;
+    setUsers(users.map((user,indx)=>{
+      if(indx == index)user = cUser;
+      return user;
+    }))
   }
   return (
     <>
@@ -155,6 +163,7 @@ function UsersTable({setChanged}) {
             <th>Email</th>
             <th>Address</th>
             <th>Role</th>
+            <th>Control</th>
           </tr>
         </thead>
         
@@ -172,25 +181,28 @@ function UsersTable({setChanged}) {
                   <td>
                     <input onInput={()=>{
                       handleInput(index+1);
-                    }} type="text" placeholder={user.fullName}></input>
+                    }} type="text" value={user.fullName} onChange={(e)=> handleChangedInput(e,"fullName" , index)}></input>
                   </td>
                   <td>
                     <input onInput={()=>{
                       handleInput(index+1);
-                    }} type="email" placeholder={user.email}></input>
+                    }} type="email" value={user.email} onChange={(e)=> handleChangedInput(e,"email" , index)}></input>
                   </td>
                   <td>
                     <input onInput={()=>{
                       handleInput(index+1);
-                    }} type="text" placeholder={user.address}></input>
+                    }} type="text" value={user.address} onChange={(e)=> handleChangedInput(e,"address" , index)}></input>
                   </td>
                   <td>
                     <select onInput={()=>{
                       handleInput(index+1);
-                    }} defaultValue={user.isAdmin?"admin":"user"}>
+                    }} defaultValue={user.isAdmin?"admin":"user"} onChange={(e)=> handleChangedInput(e,"isAdmin" , index)}>
                       <option value="user">User</option>
                       <option value="admin">Admin</option>
                     </select>
+                  </td>
+                  <td>
+                    <TiDelete className="delete-table-item"/>
                   </td>
                 </tr>
               )

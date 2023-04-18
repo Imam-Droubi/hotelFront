@@ -69,9 +69,11 @@
   padding: 0.8rem;
   border-radius: 0.5rem;
   font-size: 0.8rem;
-  margin-left: 1rem;
   cursor: pointer;
   border: none;
+}
+.right-side-buttons button{
+  margin-left: 1rem;
 }
 .control-buttons button:disabled{
   background-color: var(--clr-grey);
@@ -81,7 +83,7 @@
   background-color: var(--clr-grey);
 }
 .cancel-button:hover{
-  background-color: #8198a6;
+  background-color: var(--clr-grey-hover);
 }
 .add-new-button{
   background-color: var(--clr-dark);

@@ -25,3 +25,11 @@ td input::placeholder{
   color: var(--clr-darkest);
   opacity: 1;
 }
+.delete-table-item{
+  color: var(--clr-grey);
+  font-size: 2rem;
+  cursor: pointer;
+}
+.delete-table-item:hover{
+  color: var(--clr-darkest);
+}

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate} from "react-router-dom";
 import Logo from "../../components/Logo/Logo";
 import UserTop from "../../components/NavBar/UserTop";
 import SideNavAdmin from "../../components/SideNavAdmin/SideNavAdmin";
@@ -8,7 +8,10 @@ import UsersTable from "../../components/Tables/UsersTable";
 import {AiOutlineMenu} from "react-icons/ai"
 import "./adminUsers.css"
 import AddUserPopup from "../../components/AdminPopups/AddUserPopup";
+import { AuthContext } from "../../context/AuthContext";
 function AdminUsers(){
+  const {user}= useContext(AuthContext);
+  const navigate = useNavigate();
   const [changed , setChanged] = useState(false);
   const [windowSize , setWindowSize] = useState(window.innerWidth);
   const [menuShown , setMenuShown] = useState(false);
@@ -28,12 +31,15 @@ function AdminUsers(){
     container.classList.remove("humburger");
     sideContainer.classList.remove("humburger-container")
   }
-  window.addEventListener("resize", ()=>{
-    setWindowSize(window.innerWidth);
-  })
+  useEffect(()=>{
+    window.addEventListener("resize", ()=>{
+      setWindowSize(window.innerWidth);
+    })
+    if(!user) navigate("/errors/notauth");
+  },[user])
   
   return(
-    <>
+    user && <>
       {showPopup && <AddUserPopup setShow={setShowPopup}/>}
       <div className="admin-pages-container">
       {windowSize <= 992 && !menuShown?<AiOutlineMenu onClick={()=> showHumMenu()} className="humburger-controller"/> : null}
@@ -55,7 +61,7 @@ function AdminUsers(){
           <div className="users-content-container">
             <div className="users-page-top">
               <h1 className="table-title">Users</h1>
-              <UserTop items={["imam_droubi" ,"logout"]}/>
+              <UserTop items={[user.userName ,"Logout"]}/>
             </div>
             <div className="users-content">
               <div className="table-container">

@@ -1,17 +1,57 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./signinForm.css";
-function SigninForm(){
-  return(
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
+function SigninForm() {
+  const [userData , setUserData] = useState();
+  const {user,loading,error, dispatch} = useContext(AuthContext);
+  const naviagte = useNavigate();
+  const handleChange = (e)=>{
+    setUserData(prev=>({...prev , [e.target.id] : e.target.value}));
+  }
+  const handleClick = async(e)=>{
+    e.preventDefault();
+    dispatch({type : "LOGIN_START"});
+    try{
+      const res = await axios.post("/auth/login" , userData);
+      dispatch({type : "LOGIN_SUCCESS" , payload : res.data});
+      naviagte("/");
+      
+    }catch(err){
+      dispatch({type: "LOGIN_FAILURE" , payload : err.response.data})
+    }
+  };
+  return (
     <div className="form-container login-form-contianer">
       <h3 className="form-title">Sign In</h3>
       <form className="main-form login-form">
-        <input className="main-form-input login-input" name="email" placeholder="Email Address..." required></input>
-        <input className="main-form-input login-input" name="password" placeholder="Password..." required></input>
+        <input
+          className="main-form-input login-input"
+          id="email"
+          placeholder="Email Address..."
+          required
+          onChange={(e)=>handleChange(e)}
+        ></input>
+        <input
+          className="main-form-input login-input"
+          type="password"
+          id="password"
+          placeholder="Password..."
+          required
+          onChange={(e)=>handleChange(e)}
+        ></input>
       </form>
-      <button className="main-button">Login</button>
-      <p className="form-tail">Don't you have an account? <span className="tail-link"><Link to='/register'>Sign Up!</Link></span></p>
-    </div>
-  )
+      <button className="main-button" onClick={(e)=>handleClick(e)}>Login</button>
+      {error && <p className="form-error">{error.message}</p>}
+      <p className="form-tail">
+        Don't you have an account?{" "}
+        <span className="tail-link">
+          <Link to="/register">Sign Up!</Link>
+        </span>
+      </p>
+    </div> 
+  );
 }
 
 export default SigninForm;

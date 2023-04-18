@@ -12,12 +12,19 @@ import AdminHotels from './adminPages/AdminHotels/AdminHotels';
 import AdminRooms from './adminPages/AdminRooms/AdminRooms';
 import Search from './pages/SearchPage/Search';
 import HotelInfo from './pages/HotelnfoPage/HotelInfo';
+import UserInfo from './pages/UserPage/UserInfo';
+import { SearchContextProvider } from './context/SearchContext';
+import { AuthContextProvider } from './context/AuthContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <AuthContextProvider>
+      <SearchContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </SearchContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 );
 

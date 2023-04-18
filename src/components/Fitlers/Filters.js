@@ -1,30 +1,22 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./filters.css"
-function Filters({setFilters}){
+import { SearchContext } from "../../context/SearchContext";
+function Filters({filters ,setFilters,reFetch}){
+  const {city , dates, options , dispatch}= useContext(SearchContext);
   const handleSearch = ()=>{
-    let city = document.getElementById("city-input").value;
-    let checkIn = document.getElementById("check-in-input").value;
-    let checkOut = document.getElementById("check-out-input").value;
-    let persons = document.getElementById("persons-input").value;
-    let minPrice = document.getElementById("min-price-input").value;
-    let maxPrice = document.getElementById("max-price-input").value;
-    setFilters({
-      "city" : city,
-      "minPrice" : minPrice?Number(minPrice):undefined,
-      "maxPrice" : maxPrice?Number(maxPrice):undefined,
-      "checkIn" : checkIn,
-      "checkOut" : checkOut,
-      "persons" : persons?Number(persons):undefined
-    });
-    console.log({
-      "city" : city,
-      "minPrice" : minPrice?Number(minPrice):undefined,
-      "maxPrice" : maxPrice?Number(maxPrice):undefined,
-      "checkIn" : checkIn,
-      "checkOut" : checkOut,
-      "persons" : persons?Number(persons):undefined
-    })
+    dispatch({type : "NEW_SEARCH", payload: {
+      city : filters.city,
+      dates : [
+        filters.checkIn,
+        filters.checkOut
+      ],
+      options :{
+        people: filters.persons
+      }
+    }});
+    reFetch();
   }
+
   return(
     <>
       <div className="filters-container">
@@ -32,27 +24,27 @@ function Filters({setFilters}){
 
         <div className="filters-input">
           <p>City:</p>
-          <input type="text" placeholder="London" id="city-input"></input>
+          <input type="text" placeholder="London" onChange={(e)=> setFilters({...filters, city:e.target.value})}></input>
         </div>
         <div className="filters-input">
           <p>Check in:</p>
-          <input type="date" id="check-in-input"></input>
+          <input type="date" onChange={(e)=> setFilters({...filters, checkIn:e.target.value})}></input>
         </div>
         <div className="filters-input">
           <p>Check out:</p>
-          <input type="date" id="check-out-input"></input>
+          <input type="date" onChange={(e)=> setFilters({...filters, checkOut:e.target.value})}></input>
         </div>
         <div className="filters-input">
           <p>Persons:</p>
-          <input type="number" placeholder="2" id="persons-input"></input>
+          <input type="number" placeholder="2" onChange={(e)=> setFilters({...filters, persons:e.target.value})}></input>
         </div>
         <div className="filters-input">
           <p>Min Price:</p>
-          <input type="number" placeholder="100" id="min-price-input"></input>
+          <input type="number" placeholder="100" onChange={(e)=> setFilters({...filters, minPrice:e.target.value})}></input>
         </div>
         <div className="filters-input">
           <p>Max Price:</p>
-          <input type="number" placeholder="200" id="max-price-input"></input>
+          <input type="number" placeholder="200" onChange={(e)=> setFilters({...filters, maxPrice:e.target.value})}></input>
         </div>
       <button className="search-button" onClick={handleSearch}>Saerch</button>
       </div>

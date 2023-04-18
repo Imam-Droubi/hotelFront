@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../components/Logo/Logo";
 import UserTop from "../../components/NavBar/UserTop";
 import SideNavAdmin from "../../components/SideNavAdmin/SideNavAdmin";
@@ -8,7 +8,10 @@ import "./adminHotels.css"
 import { AiOutlineMenu } from "react-icons/ai";
 import HumburgerAdmin from "../../components/SideNavAdmin/HumburgerAdmin";
 import AddHotelPopup from "../../components/AdminPopups/AddHotelPopup";
+import { AuthContext } from "../../context/AuthContext";
 function AdminHotels(){
+  const {user} = useContext(AuthContext);
+  const navigate = useNavigate();
   const [changed , setChanged] = useState(false);
   const [windowSize , setWindowSize] = useState(window.innerWidth);
   const [menuShown , setMenuShown] = useState(false);
@@ -27,11 +30,14 @@ function AdminHotels(){
     container.classList.remove("humburger");
     sideContainer.classList.remove("humburger-container")
   }
-  window.addEventListener("resize", ()=>{
-    setWindowSize(window.innerWidth);
-  })
+  useEffect(()=>{
+    window.addEventListener("resize", ()=>{
+      setWindowSize(window.innerWidth);
+    })
+    if(!user) navigate("/errors/notauth");
+  },[user])
   return(
-    <>
+    user && <>
       {showPopup && <AddHotelPopup setShow={setShowPopup}/>}
       <div className="admin-pages-container">
       {windowSize <= 992 && !menuShown?<AiOutlineMenu onClick={()=> showHumMenu()} className="humburger-controller"/> : null}
@@ -53,7 +59,7 @@ function AdminHotels(){
           <div className="users-content-container">
             <div className="users-page-top">
               <h1 className="table-title">Hotels</h1>
-              <UserTop items={["imam_droubi" ,"logout"]}/>
+              <UserTop items={[user.userName ,"Logout"]}/>
             </div>
             <div className="users-content">
               <div className="table-container">

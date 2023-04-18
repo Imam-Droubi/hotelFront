@@ -1,4 +1,4 @@
-1. figure how to make and store reservations 
-2. make a user page to show reservations and cancel them or to edit personal info
-3. add comments section 
-4. make real data for testing 
+1. handle search filters 
+2. handle reservation making 
+3. handle hotels fetching (back and front)
+4. handle admin pages

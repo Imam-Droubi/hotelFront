@@ -1,0 +1,91 @@
+[
+  {
+    "__id" : "640c72a148c5e882393b8d9c",
+    "name" : "Reggenza Hotel",
+    "type" : "hotel",
+    "city" : "Ramallah",
+    "address" : "Al Nahda Street, Ramallah",
+    "distance" : 250,
+    "desc" : "Set in Ramallah, 200 m from Al Manara Square, Reggenza Hotel offers accommodation with a terrace, free private parking and a restaurant. With free WiFi, this 4-star hotel offers room service and a 24-hour front desk. Mukataa is 1 km from the hotel and Khalil Sakakini Cultural Center is 1.2 km away Guests at the hotel can enjoy a continental breakfast.Birzeit University is 8.4 km from Reggenza Hotel, while Garden of Gethsemane is 16 km from the property. The nearest airport is Ben Gurion Airport, 36 km from the accommodation.",
+    "title" : "Reggenza Hotel",
+    "rating" : 5,
+    "cheapestPrice" : 100,
+    "highestPrice" : 600,
+    "featured" : true,
+    "photos" : [
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/436535956.jpg?k=aecc8ac4ff3f4ebde6e390f57c4ca52ceb63d14820c951011a46cbbfadff250a&o=&hp=1",
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/439762262.jpg?k=b925e0dac9274db71164dbdea7eb03614a4d747ba2d9d767e70b0acdb5054499&o=&hp=1",
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/439762291.jpg?k=69713fa8c0852a18e1c6c502ba215b589aa0a4476c4bf7234c34e648f23f690b&o=&hp=1",
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/439762268.jpg?k=4d62d37c2a8b68dc72504a419031c7fda8620082b54e121b7554cc3cf409370e&o=&hp=1",
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/439762307.jpg?k=abf30f2ccd9b4c89e041660eae59c107a0b6da930b4781ca36f65739ad8f9dfa&o=&hp=1"
+    ],
+    "rooms" : [
+    ]
+  },
+  {
+    "__id" : "640c72a148c5e882393b8d9c",
+    "name" : "Royal Court Hotel",
+    "type" : "Motel",
+    "city" : "Ramallah",
+    "address" : "24-Jaffa Street, 2119 Ramallah",
+    "distance" : 600,
+    "desc" : "You're eligible for a Genius discount at Royal Court Hotel! To save at this property, all you have to do is sign in.Centrally located in the heart of Ramallah, this hotel is 10 minutes’ walk from the Khalil Sakakini Cultural Center. The spacious rooms and suites all have a balcony and a flat-screen TV.All of the rooms at the Royal Court Hotel have a private bathroom with bathrobes and free toiletries.A free buffet breakfast is available for guests at the restaurant, which also serves à la carte meals. Room service is also available on request.The Royal Court offers a range of facilities from the 24-hour front desk, including tour booking information, airport shuttles, and car rentals. Free parking is also available.Activities in the area include the British Council, and a range of bars and café’s which are all within 10 minutes’ walk of the hotel.The Royal Court Hotel is just 5 minutes’ walk from the centre of Ramallah and just under 40 minutes’ drive from Jerusalem.Solo travellers particularly like the location — they rated it 9.0 for a one-person stay.",
+    "title" : "Royal Court Hotel",
+    "rating" : 3,
+    "cheapestPrice" : 200,
+    "highestPrice" : 700,
+    "featured" : true,
+    "photos" : [
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/300858501.jpg?k=b0c3d43b2d685d67691b46f1019e88f60c0a63c29a8f2389834b35cfcbc335f1&o=&hp=1",
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/223210789.jpg?k=92b6af481a488ee389d369146e7361ad5c45f854bba617067be50cdc2789a1f1&o=&hp=1",
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/223210746.jpg?k=48ce11b7145b1f78504a09e8708588b6b9baeb819a9feb4b74b487d8c6f5133b&o=&hp=1",
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/229618630.jpg?k=ca1dd440edbececa66b4e8b10a86260c59ff6862920b7e0b0d64f441e80852da&o=&hp=1"
+    ],
+    "rooms" : [
+    ]
+  },
+  {
+    "__id" : "640c72a148c5e882393b8d9c",
+    "name" : "Golden Rose Hotel",
+    "type" : "Resort",
+    "city" : "Nablus",
+    "address" : "شارع جامعة النجاح مبنى جولدن روز",
+    "distance" : 1900,
+    "desc" : "Set in Nablus, 48 km from Birzeit University, Golden Rose Hotel offers accommodation with a terrace, free private parking, a restaurant and a bar. The accommodation provides a 24-hour front desk, airport transfers, room service and free WiFi.The hotel will provide guests with air-conditioned rooms offering a desk, a kettle, a fridge, a minibar, a safety deposit box, a flat-screen TV and a private bathroom with a bidet. At Golden Rose Hotel every room has bed linen and towels.Guests at the accommodation can enjoy a continental breakfast.At Golden Rose Hotel guests are welcome to take advantage of a hot tub.Mukataa is 50 km from the hotel. The nearest airport is Ben Gurion Airport, 54 km from Golden Rose Hotel.Solo travellers particularly like the location — they rated it 8.5 for a one-person stay.",
+    "title" : "Royal Court Hotel",
+    "rating" : 4,
+    "cheapestPrice" : 120,
+    "highestPrice" : 450,
+    "featured" : false,
+    "photos" : [
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/345212471.jpg?k=14323ca3f0b431c6824db4e1086fb61248ae3d4dab52a0a190a5ada2caed1b51&o=&hp=1",
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/311095040.jpg?k=6912f164059c165f578e70567ed509ad34dcd2502b15e557ff1605ad61e3e622&o=&hp=1",
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/311095042.jpg?k=c2cf773840191f8c8f13249cafff783b98b353e4e156b96f4bfa8df291f26b9f&o=&hp=1",
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/311095058.jpg?k=b038a94d2347388e135597548d55a9ddc59a5704cb54dd71c838f2d132588273&o=&hp=1"
+    ],
+    "rooms" : [
+    ]
+  },
+  {
+    "__id" : "640c72a148c5e882393b8d9c",
+    "name" : "Queen Plaza Hotel",
+    "type" : "hotel",
+    "city" : "Hebron",
+    "address" : "Ainsara",
+    "distance" : 1200,
+    "desc" : "You're eligible for a Genius discount at Queen Plaza Hotel! To save at this property, all you have to do is sign in.Queen Plaza Hotel is situated in Hebron, 15 km from Bethlehem. Guests can enjoy the on-site restaurant.Free WiFi is provided throughout the property and free private parking is available on site.The rooms come with a flat-screen TV with satellite channels. Certain units have a seating area to relax in after a busy day. You will find a coffee machine in the room. Extras include free toiletries and a hairdryer.You will find a 24-hour front desk at the property. Car hire is available at this hotel and the area is popular for hiking. Ein Bokek is 46 km from Queen Plaza Hotel, while Jerusalem is 28 km from the propertySolo travellers particularly like the location — they rated it 8.3 for a one-person stay.",
+    "title" : "Queen Plaza Hotel",
+    "rating" : 5,
+    "cheapestPrice" : 200,
+    "highestPrice" : 500,
+    "featured" : true,
+    "photos" : [
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/161387449.jpg?k=5119823c423326cfd1ece93a6602df4a300f1c45b36e3b619875f1d17ba8e2b5&o=&hp=1",
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/131591847.jpg?k=15a7246f09d7d0dc16a4626252fd08b1e0eef092d15e6efed26b7434f3f43391&o=&hp=1",
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/66254821.jpg?k=3aefd8050f29ed170b85d2bcf82712922766c400cae8d1fae6a9e6a7818452ca&o=&hp=1",
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/91902714.jpg?k=ad254fb881734ff83d5a1f8476748c52b117a0dcafa1d1282cb751236cd87fe7&o=&hp=1"
+    ],
+    "rooms" : [
+    ]
+  }
+]

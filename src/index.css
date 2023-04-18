@@ -8,7 +8,10 @@
   --clr-bright : #01ABE8;
   --clr-darkest-opacity70 : rgba(0,25,50,0.7);
   --clr-silver: #f0f1f3;
+  --clr-silver-hover: #d4d6d7;
   --clr-grey:#47555e;
+  --clr-grey-hover : #8198a6;
+  --clr-error : #c50606;
   font-family: 'Source Sans Pro', sans-serif;
   /* font-size: 1vw; */
 }
@@ -17,7 +20,6 @@
   :root{
     font-size: 15px;
   }
-  
 }
 *{
   margin: 0;

@@ -9,3 +9,7 @@
 .login-input{
   width: 100%;
 }
+.form-error{
+  color: var(--clr-error);
+  font-size: 1.2rem;
+}

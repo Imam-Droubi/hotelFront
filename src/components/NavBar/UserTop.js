@@ -1,9 +1,9 @@
 import LoogedItems from "./LoggedItems";
-function UserTop({items,setLogged}){
+function UserTop({items}){
   return(
     <>
     <nav className="logged-nav">
-      <LoogedItems setLogged={setLogged} items = {items} />
+      <LoogedItems items = {items} />
     </nav>
     </>
   )

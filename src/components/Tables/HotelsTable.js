@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./tables.css"
+import { TiDelete } from "react-icons/ti";
 function HotelsTable({setChanged}) {
   const [hotels, setHotels] = useState([
     {
@@ -79,7 +80,14 @@ function HotelsTable({setChanged}) {
     if(changedHotels.indexOf(index) === -1){
       setChangedHotels([...changedHotels , index]);
     }
-
+  }
+  function handleChangedInput(event,attr, index){
+    let cHotel = hotels.at(index);
+    cHotel[attr] = attr === "featured" ? event.target.value === "YES" ? true : false  : event.target.value ;
+    setHotels(hotels.map((hotel,indx)=>{
+      if(indx == index)hotel = cHotel;
+      return hotel;
+    }))
   }
   return (
     <>
@@ -92,6 +100,7 @@ function HotelsTable({setChanged}) {
             <th>Type</th>
             <th>Address</th>
             <th>Featured</th>
+            <th>Control</th>
           </tr>
         </thead>
         
@@ -109,17 +118,17 @@ function HotelsTable({setChanged}) {
                   <td>
                     <input onInput={()=>{
                       handleInput(index+1);
-                    }} type="text" placeholder={hotel.name}></input>
+                    }} type="text" value={hotel.name} onChange={(e)=> handleChangedInput(e,"name" , index)}></input>
                   </td>
                   <td>
                     <input onInput={()=>{
                       handleInput(index+1);
-                    }} type="text" placeholder={hotel.type}></input>
+                    }} type="text" value={hotel.type} onChange={(e)=> handleChangedInput(e,"type" , index)} ></input>
                   </td>
                   <td>
                     <input onInput={()=>{
                       handleInput(index+1);
-                    }} type="text" placeholder={hotel.address}></input>
+                    }} type="text" value={hotel.address} onChange={(e)=> handleChangedInput(e,"address" , index)}></input>
                   </td>
                   <td>
                     <select onInput={()=>{
@@ -128,6 +137,9 @@ function HotelsTable({setChanged}) {
                       <option value="true">YES</option>
                       <option value="false">NO</option>
                     </select>
+                  </td>
+                  <td>
+                    <TiDelete className="delete-table-item"/>
                   </td>
                 </tr>
               )

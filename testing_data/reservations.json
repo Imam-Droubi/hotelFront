@@ -1,0 +1,32 @@
+[
+  {
+    "__id" : "640cc9f3638a380d0bb41b27",
+    "userId" : "640cc9f3538a380d0bb41b27",
+    "hotelId" : "640c72a148c5e882393b8d8b",
+    "hotelName" : "Royal Court Hotel",
+    "checkInDate" : "23rd-Mar-2023",
+    "checkOutDate" : "25th-Mar-2023",
+    "cost" : 150,
+    "rooms" :[101,102]
+  },
+  {
+    "__id" : "640cc9f3638a380d0bb41b27",
+    "userId" : "640cc9f3538a380d0bb41b27",
+    "hotelId" : "640c72a148c5e882393b8d8b",
+    "hotelName" : "Royal Court Hotel",
+    "checkInDate" : "23rd-Mar-2023",
+    "checkOutDate" : "25th-Mar-2023",
+    "cost" : 150,
+    "rooms" :[101,102]
+  },
+  {
+    "__id" : "640cc9f3638a380d0bb41b27",
+    "userId" : "640cc9f3538a380d0bb41b27",
+    "hotelId" : "640c72a148c5e882393b8d8b",
+    "hotelName" : "Royal Court Hotel",
+    "checkInDate" : "20th-Feb-2023",
+    "checkOutDate" : "22nd-Feb-2023",
+    "cost" : 150,
+    "rooms" :[101,102]
+  }
+]

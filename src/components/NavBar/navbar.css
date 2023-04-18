@@ -25,3 +25,9 @@
   border: 0.2rem solid var(--clr-dark);
   border-radius: 0.2rem;
 }
+.user-navigation-item a{
+  text-decoration: none;
+}
+.user-navigation-item a:hover{
+  text-decoration: underline;
+}

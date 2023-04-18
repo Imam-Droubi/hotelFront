@@ -6,9 +6,10 @@
   overflow-x: hidden  ;
 }
 .search-page-sidebar{
-  width: 25%;
+  width: 20%;
   background-color: var(--clr-darkest);
   min-height: 100vh;
+
 }
 .search-page-side-bar-container{
   width: 90%;
@@ -20,7 +21,7 @@
 }
 
 .search-page-content{
-  width: 73%; 
+  width: 78%; 
   height: 90%;
   overflow-x: hidden;
 }
@@ -40,7 +41,9 @@
   }
   .search-page-sidebar{
     width: max-content;
-    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
   }
   .search-page-content-container{
     width: 95%;

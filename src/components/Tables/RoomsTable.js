@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./tables.css"
+import { TiDelete } from "react-icons/ti";
 function RoomsTable({setChanged}) {
   const [rooms, setRooms] = useState([
     {
@@ -37,7 +38,14 @@ function RoomsTable({setChanged}) {
     if(changedRooms.indexOf(index) === -1){
       setChangedRooms([...changedRooms , index]);
     }
-
+  }
+  function handleChangedInput(event,attr, index){
+    let cRoom = rooms.at(index);
+    cRoom[attr] = event.target.value ;
+    setRooms(rooms.map((room,indx)=>{
+      if(indx == index)room = cRoom;
+      return room;
+    }))
   }
   return (
     <>
@@ -50,6 +58,7 @@ function RoomsTable({setChanged}) {
             <th>Title</th>
             <th>MaxPeople</th>
             <th>Price</th>
+            <th>Control</th>
           </tr>
         </thead>
         
@@ -70,17 +79,20 @@ function RoomsTable({setChanged}) {
                   <td>
                     <input onInput={()=>{
                       handleInput(index+1);
-                    }} type="text" placeholder={room.title}></input>
+                    }} type="text" value={room.title} onChange={(e)=> handleChangedInput(e,"title" , index)} ></input>
                   </td>
                   <td>
                     <input onInput={()=>{
                       handleInput(index+1);
-                    }} type="text" placeholder={room.maxPeople}></input>
+                    }} type="text" value={room.maxPeople} onChange={(e)=> handleChangedInput(e,"maxPeople" , index)} ></input>
                   </td>
                   <td>
                     <input onInput={()=>{
                       handleInput(index+1);
-                    }} type="text" placeholder={room.price}></input>
+                    }} type="text" value={room.price} onChange={(e)=> handleChangedInput(e,"price" , index)}></input>
+                  </td>
+                  <td>
+                    <TiDelete className="delete-table-item"/>
                   </td>
                 </tr>
               )
