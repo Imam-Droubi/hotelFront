@@ -39,8 +39,8 @@ function UserInfo(){
             </div>
             <div className="user-right-content">
               <div className="user-right-headers">
-                <h2 onClick={()=> setShowUserInfo(!showUserInfo)} id="user-informations" className={showUserInfo ? "user-page-selected" : "" }><a>User Info</a></h2>
-                <h2 onClick={()=> setShowUserInfo(!showUserInfo)} id="user-reservations" className={!showUserInfo ? "user-page-selected" : "" }><a>Reservations</a></h2>
+                <h2 onClick={()=> setShowUserInfo(true)} id="user-informations" className={showUserInfo ? "user-page-selected" : "" }><a>User Info</a></h2>
+                <h2 onClick={()=> setShowUserInfo(false)} id="user-reservations" className={!showUserInfo ? "user-page-selected" : "" }><a>Reservations</a></h2>
               </div>
               <div className="user-right-content-content">
                 {showUserInfo ? 

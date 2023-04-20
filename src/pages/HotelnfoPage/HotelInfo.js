@@ -12,11 +12,10 @@ import { SearchContext } from "../../context/SearchContext";
 function HotelInfo(){
   const navigate = useNavigate();
   const {user} = useContext(AuthContext);
-  const link = window.location.href.split("/") ;
-  const hotelId = link[link.length-1];
+  const [hotelId, setHotelId] = useState();
   const {data:hotel,loading,error} = useFetch(`/hotels/${hotelId}`);
   const {dates} = useContext(SearchContext);
-  
+  const [nights, setNights] = useState(1);
   const [currentPhotoIndex , setCurrentPhotoIndex] = useState(0);
   const [showPopUp , setShowPopUp] = useState(false);
   const handleRightSliding = ()=>{
@@ -31,10 +30,23 @@ function HotelInfo(){
   }
   useEffect(()=>{
     if(!user)navigate("/login");
+    const link = window.location.href.split("/") ;
+    setHotelId(link[link.length-1]);
+    console.log(dates);
+    if(dates.length){
+      let date1 = dates[0].split('-');
+      let date2 = dates[1].split('-');
+      let d1 = new Date(date1[0],Number(date1[1])-1,date1[2]);
+      let d2 = new Date(date2[0],Number(date2[1])-1,date2[2]);
+      const MS_PER_DAY = 1000*3600*24;
+      let days = (d2.getTime() - d1.getTime())/MS_PER_DAY ;
+      setNights(Number(days)+1);
+    }
+    
   },[user])
   return(
     loading? "Loading..." :<>
-      {showPopUp? <ReservePopUp show={showPopUp} setShow={setShowPopUp} /> : null}
+      {showPopUp? <ReservePopUp hotel={hotel} user={user} dates={dates} nights={nights} setShow={setShowPopUp}  /> : null}
       <div className="hotel-info-page">
         <div className="hotel-info-top-bar">
           <div className="hotel-info-top-contianer">
@@ -64,7 +76,7 @@ function HotelInfo(){
             <div className="hotel-info-reserve-now-widget">
               <h3>Reserve Now!</h3>
               <p className="hotel-short-desc">{hotel.title}</p>
-              <h4 className="hotel-reservation-price">$300 (2 Nights)</h4>
+              <h4 className="hotel-reservation-price">${hotel.cheapestPrice * nights} ({nights || 1} Nights)</h4>
               <button className="reserve-now-button" onClick={()=>setShowPopUp(!showPopUp)}>Reserve Now</button>
             </div>
           </div>

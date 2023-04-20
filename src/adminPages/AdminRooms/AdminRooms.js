@@ -39,7 +39,6 @@ function AdminRooms(){
   return(
     user && <>
     {showPopup && <AddRoomPopup setShow={setShowPopup}/>}
-    {console.log(user)}
       <div className="admin-pages-container">
       {windowSize <= 992 && !menuShown?<AiOutlineMenu onClick={()=> showHumMenu()} className="humburger-controller"/> : null}
         <div className="admin-pages-sidebar">
@@ -68,10 +67,10 @@ function AdminRooms(){
               </div>
               <div className="control-buttons">
                 <button onClick={()=> setShowPopup(true)} className="add-new-button">Add Room</button>
-                <div className="right-side-buttons">
+                {/* <div className="right-side-buttons">
                   <button disabled={!changed} className="save-changes-button">Save changes</button>
                   <button disabled={!changed} className="cancel-button">Cancel</button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

@@ -4,6 +4,7 @@ import { SearchContext } from "../../context/SearchContext";
 function Filters({filters ,setFilters,reFetch}){
   const {city , dates, options , dispatch}= useContext(SearchContext);
   const handleSearch = ()=>{
+    console.log(filters.checkIn);
     dispatch({type : "NEW_SEARCH", payload: {
       city : filters.city,
       dates : [
@@ -16,7 +17,9 @@ function Filters({filters ,setFilters,reFetch}){
     }});
     reFetch();
   }
-
+  useEffect(()=>{
+    
+  },)
   return(
     <>
       <div className="filters-container">
@@ -28,11 +31,11 @@ function Filters({filters ,setFilters,reFetch}){
         </div>
         <div className="filters-input">
           <p>Check in:</p>
-          <input type="date" onChange={(e)=> setFilters({...filters, checkIn:e.target.value})}></input>
+          <input type="date" value={filters.checkIn} onChange={(e)=> setFilters({...filters, checkIn:e.target.value})}></input>
         </div>
         <div className="filters-input">
           <p>Check out:</p>
-          <input type="date" onChange={(e)=> setFilters({...filters, checkOut:e.target.value})}></input>
+          <input type="date" value={filters.checkOut} onChange={(e)=> setFilters({...filters, checkOut:e.target.value})}></input>
         </div>
         <div className="filters-input">
           <p>Persons:</p>

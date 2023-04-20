@@ -1,52 +1,27 @@
 import { useEffect, useState } from "react";
 import "./tables.css"
 import { TiDelete } from "react-icons/ti";
+import useFetch from "../../hooks/useFetch";
+import DeletionPopup from "../DeletionPopup/DeletionPopup";
+import { FaEdit } from "react-icons/fa";
+import UpdateRoomPopup from "../AdminPopups/UpdateRoomPopup";
 function RoomsTable({setChanged}) {
-  const [rooms, setRooms] = useState([
-    {
-        "__id" : "640c72a148c5e882393b8d8b",
-        "hotelId": "640c72a148c5e882393b8d8c",
-        "title" : "King Room",
-        "desc" : "King size bed, 1 bathroom, balconey",
-        "price" : 150,
-        "maxPeople" : 2,
-        "roomNumbers" : [{"number" : 101} , {"number": 102}]
-    },
-    {
-      "__id" : "640c72a148c5e882393b8d8b",
-      "hotelId": "640c72a148c5e882393b8d8c",
-      "title" : "Single Room",
-      "desc" : "regular size bed, 1 bathroom, balconey",
-      "price" : 100,
-      "maxPeople" : 2,
-      "roomNumbers" : [{"number" : 105} , {"number": 107}]
-    },
-    {
-      "__id" : "640c72a148c5e882393b9d8b",
-      "hotelId": "640c72a148c5e882393b8d8c",
-      "title" : "Single Room",
-      "desc" : "regular size bed, 1 bathroom, balconey",
-      "price" : 150,
-      "maxPeople" : 2,
-      "roomNumbers" : [{"number" : 105} , {"number": 107}]
-    }
-  ]);
-  const [changedRooms,setChangedRooms] = useState([]);
+  const { data: rooms, loading, error } = useFetch(`/rooms`);
+  const [showEditPopup, setShowEditPopup] = useState(false);
+  const [showDeletionPopup, setShowDeletionPopup] = useState(false);
+  const [PopupRoomId, setPopupRoomId] = useState();
+  const [PopupHotelId, setPopupHotelId] = useState();
+  const handleEditClick = (e,hotelId) => {
+    setPopupRoomId(e.target.id);
+    setPopupHotelId(hotelId);
+    setShowEditPopup(true);
+  };
+  const handleDeleteClick = (e,hotelId) => {
+    setPopupRoomId(e.target.id);
+    setPopupHotelId(hotelId);
+    setShowDeletionPopup(true);
+  };
 
-  function handleInput(index){
-    setChanged(true);
-    if(changedRooms.indexOf(index) === -1){
-      setChangedRooms([...changedRooms , index]);
-    }
-  }
-  function handleChangedInput(event,attr, index){
-    let cRoom = rooms.at(index);
-    cRoom[attr] = event.target.value ;
-    setRooms(rooms.map((room,indx)=>{
-      if(indx == index)room = cRoom;
-      return room;
-    }))
-  }
   return (
     <>
       <table>
@@ -71,28 +46,31 @@ function RoomsTable({setChanged}) {
                     {index+1}
                   </td>
                   <td>
-                    {room.__id}
+                    {room._id}
                   </td>
                   <td>
                     {room.hotelId}
                   </td>
                   <td>
-                    <input onInput={()=>{
-                      handleInput(index+1);
-                    }} type="text" value={room.title} onChange={(e)=> handleChangedInput(e,"title" , index)} ></input>
+                    {room.title}
                   </td>
                   <td>
-                    <input onInput={()=>{
-                      handleInput(index+1);
-                    }} type="text" value={room.maxPeople} onChange={(e)=> handleChangedInput(e,"maxPeople" , index)} ></input>
+                    {room.maxPeople}
                   </td>
                   <td>
-                    <input onInput={()=>{
-                      handleInput(index+1);
-                    }} type="text" value={room.price} onChange={(e)=> handleChangedInput(e,"price" , index)}></input>
+                    {room.price}
                   </td>
                   <td>
-                    <TiDelete className="delete-table-item"/>
+                  <FaEdit
+                        onClick={(e)=>handleEditClick(e,room.hotelId)}
+                        id={room._id}
+                        className="edit-table-item"
+                      />
+                      <TiDelete
+                        onClick={(e)=> handleDeleteClick(e,room.hotelId)}
+                        id={room._id}
+                        className="delete-table-item"
+                      />
                   </td>
                 </tr>
               )
@@ -101,6 +79,18 @@ function RoomsTable({setChanged}) {
           
         </tbody>
       </table>
+      {showEditPopup ? (
+        <UpdateRoomPopup roomId={PopupRoomId} setShow={setShowEditPopup} />
+      ) : null}
+      {showDeletionPopup ? (
+        <DeletionPopup
+          elementId={PopupRoomId}
+          hotelId = {PopupHotelId}
+          setShow={setShowDeletionPopup}
+          message={"Are you sure you want to delete this room"}
+          deletionUrl = {`/rooms`}
+        />
+      ) : null}
     </>
   );
 }

@@ -10,8 +10,10 @@ import HumburgerSearch from "../../components/HumburgerSearch/HumburgerSearh";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import useFetch from "../../hooks/useFetch";
+import { SearchContext } from "../../context/SearchContext";
 function Search(){
   const {user} = useContext(AuthContext);
+  const {dates} = useContext(SearchContext);
   const [filters, setFilters] = useState({
     city:undefined,
     checkIn : undefined,
@@ -44,7 +46,15 @@ function Search(){
       setWindowSize(window.innerWidth);
     })
     if(!user)navigate("/login")
-    
+    let date1 = dates[0].split('-');
+    let date2 = dates[1].split('-');
+    let d1 = new Date(date1[0],Number(date1[1])-1,date1[2]).toLocaleDateString();
+    let d2 = new Date(date2[0],Number(date2[1])-1,date2[2]).toLocaleDateString();
+    const lst = d1.split('/');
+    const lst2 = d2.split('/');
+    d1 = `${lst[2]}-${lst[0].length == 1? '0' + lst[0]:lst[0]}-${lst[1].length == 1? '0' + lst[1]:lst[1]}`
+    d2 = `${lst2[2]}-${lst2[0].length == 1? '0' + lst2[0]:lst2[0]}-${lst2[1].length == 1? '0' + lst2[1]:lst2[1]}`
+    setFilters({...filters , checkIn : d1 , checkOut : d2});
   },[user])
   
   return(
