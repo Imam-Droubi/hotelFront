@@ -4,12 +4,13 @@ import "./reservePopUp.css";
 import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 function ReservePopUp(props) {
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
   const {
     data: rooms,
     loading,
     error,
     reFetch,
-  } = useFetch(`/hotels/room/${props.hotel._id}`);
+  } = useFetch(`${origin}/hotels/room/${props.hotel._id}`);
   const { dates } = useContext(SearchContext);
   const [selectedRooms, setSelectedRooms] = useState([]);
   const [selectedRoomNumbers, setSelectedRoomNumber] = useState([]);
@@ -50,7 +51,7 @@ function ReservePopUp(props) {
   };
   const createReservation = async (data) => {
     try {
-      const res = await axios.post("/reservations", data);
+      const res = await axios.post(`${origin}/reservations`, data);
       console.log(res);
       props.setShow(false);
     } catch (err) {

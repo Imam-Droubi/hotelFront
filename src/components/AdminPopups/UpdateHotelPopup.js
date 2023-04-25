@@ -3,11 +3,12 @@ import useFetch from "../../hooks/useFetch";
 import "./adminPopups.css"
 import { useEffect, useState } from "react";
 function UpdateHotelPopup({setShow,hotelId}){
-  const { data: hotel, loading, error, reFetch } = useFetch(`/hotels/${hotelId}`);
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
+  const { data: hotel, loading, error, reFetch } = useFetch(`${origin}/hotels/${hotelId}`);
   const [hotelData, setHotelData] = useState();
   const updateData = async()=>{
     try{
-      const res = await axios.put(`/hotels/${hotelId}`, hotelData);
+      const res = await axios.put(`${origin}/hotels/${hotelId}`, hotelData);
       setShow(false);
     }catch(err){
       throw err;

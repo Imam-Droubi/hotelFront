@@ -28,6 +28,7 @@
 }
 .deletion-pop-up-container p{
   font-size: 2rem;
+  text-align: center;
 }
 .deletion-popup-buttons{
   display: flex;

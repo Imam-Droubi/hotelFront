@@ -12,8 +12,9 @@ import { SearchContext } from "../../context/SearchContext";
 function HotelInfo(){
   const navigate = useNavigate();
   const {user} = useContext(AuthContext);
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
   const [hotelId, setHotelId] = useState();
-  const {data:hotel,loading,error} = useFetch(`/hotels/${hotelId}`);
+  const {data:hotel,loading,error} = useFetch(`${origin}/hotels/${hotelId}`);
   const {dates} = useContext(SearchContext);
   const [nights, setNights] = useState(1);
   const [currentPhotoIndex , setCurrentPhotoIndex] = useState(0);

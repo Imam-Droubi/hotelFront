@@ -61,6 +61,8 @@
   font-weight: 400;
 }
 .main-button{
+  animation-name: up;
+  animation-duration: 1s;
   font-family: inherit;
   padding: 1rem 2rem;
   background: none;

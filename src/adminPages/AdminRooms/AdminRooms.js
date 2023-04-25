@@ -9,6 +9,7 @@ import HumburgerAdmin from "../../components/SideNavAdmin/HumburgerAdmin";
 import { AiOutlineMenu } from "react-icons/ai";
 import AddRoomPopup from "../../components/AdminPopups/AddRoomPopup";
 import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
 function AdminRooms(){
   const {user} = useContext(AuthContext);
   const navigate = useNavigate();
@@ -16,6 +17,9 @@ function AdminRooms(){
   const [windowSize , setWindowSize] = useState(window.innerWidth);
   const [menuShown , setMenuShown] = useState(false);
   const [showPopup , setShowPopup] = useState(false);
+  const [isAdmin , setIsAdmin] = useState(null);
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
+
   const  showHumMenu = ()=>{
     setMenuShown(true);
     let container = document.getElementsByClassName("admin-pages-sidebar")[0];
@@ -30,14 +34,23 @@ function AdminRooms(){
     container.classList.remove("humburger");
     sideContainer.classList.remove("humburger-container")
   }
+  const checkAdmin = async ()=>{
+    try{
+      let res = await axios.get(`${origin}/users/check/${user._id}`, {withCredentials : true});
+      if(res.data === "NO")setIsAdmin(false);
+    }catch(err){
+      throw(err);
+    }
+  }
   useEffect(()=>{
+    checkAdmin();
     window.addEventListener("resize", ()=>{
       setWindowSize(window.innerWidth);
     })
-    if(!user)navigate("/errors/notauth");
-  },[user])
+    if(!user || (isAdmin != null && !isAdmin) )navigate("/errors/notauth");
+  },[user,isAdmin])
   return(
-    user && <>
+    user &&<>
     {showPopup && <AddRoomPopup setShow={setShowPopup}/>}
       <div className="admin-pages-container">
       {windowSize <= 992 && !menuShown?<AiOutlineMenu onClick={()=> showHumMenu()} className="humburger-controller"/> : null}

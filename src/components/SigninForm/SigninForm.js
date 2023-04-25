@@ -6,6 +6,7 @@ import axios from "axios";
 function SigninForm() {
   const [userData , setUserData] = useState();
   const {user,loading,error, dispatch} = useContext(AuthContext);
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
   const naviagte = useNavigate();
   const handleChange = (e)=>{
     setUserData(prev=>({...prev , [e.target.id] : e.target.value}));
@@ -14,7 +15,7 @@ function SigninForm() {
     e.preventDefault();
     dispatch({type : "LOGIN_START"});
     try{
-      const res = await axios.post("/auth/login" , userData);
+      const res = await axios.post(`${origin}/auth/login` , userData);
       dispatch({type : "LOGIN_SUCCESS" , payload : res.data});
       naviagte("/");
       

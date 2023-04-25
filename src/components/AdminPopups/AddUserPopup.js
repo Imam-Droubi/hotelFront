@@ -5,9 +5,10 @@ function AddUserPopup({ setShow }) {
   const [userData, setUserData] = useState({});
   const [showErr , setShowErr] = useState(false);
   const [errMessage, setErrMessage] = useState("Something is wrong, please check your information...");
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
   const handleAdding = async()=>{
     try{
-      let res = await axios.post(`/auth/register` , userData)
+      let res = await axios.post(`${origin}/auth/register` , userData)
       setShow(false);
     }catch(err){
       setErrMessage(err.response.message);

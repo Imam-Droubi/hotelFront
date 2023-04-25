@@ -2,14 +2,14 @@ import { useEffect, useReducer } from "react";
 import { createContext } from "react";
 
 const getDate = (x)=>{
-  const str = x.toLocaleDateString();
-  const lst = str.split('/');
+  let str = x.toLocaleDateString();
+  let lst = str.split('/');
   str = `${lst[2]}-${lst[0]}-${lst[1]}`
   return str;
 }
 const INITIAL_STATE = {
   city : undefined,
-  dates : localStorage.getItem("dates").split(",") || [getDate(new Date()),getDate(new Date())],
+  dates : localStorage.getItem("dates")?localStorage.getItem("dates").split(",") : [getDate(new Date()),getDate(new Date())],
   options:{
     people: undefined,
     room : undefined,

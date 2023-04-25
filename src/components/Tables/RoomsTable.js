@@ -6,7 +6,8 @@ import DeletionPopup from "../DeletionPopup/DeletionPopup";
 import { FaEdit } from "react-icons/fa";
 import UpdateRoomPopup from "../AdminPopups/UpdateRoomPopup";
 function RoomsTable({setChanged}) {
-  const { data: rooms, loading, error } = useFetch(`/rooms`);
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
+  const { data: rooms, loading, error } = useFetch(`${origin}/rooms`);
   const [showEditPopup, setShowEditPopup] = useState(false);
   const [showDeletionPopup, setShowDeletionPopup] = useState(false);
   const [PopupRoomId, setPopupRoomId] = useState();

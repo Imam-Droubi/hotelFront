@@ -1,13 +1,15 @@
 import axios from "axios";
 import "./deletionPopup.css";
+import { useState } from "react";
 function DeletionPopup(props){
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
   const deleteItem = async (url)=>{
     try{
       let res ;
       if(props.hotelId){
-        res = await axios.delete(`${url}/${props.elementId}/${props.hotelId}`);
+        res = await axios.delete(`${origin}/${url}/${props.elementId}/${props.hotelId}`);
       }else{
-        res = await axios.delete(`${url}/${props.elementId}`);
+        res = await axios.delete(`${origin}/${url}/${props.elementId}`);
       }
       props.setShow(false);
     }catch(err){

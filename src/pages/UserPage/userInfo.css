@@ -49,14 +49,34 @@
   height: 20rem;
   border-radius: 50%;
   margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
 }
 .user-profile-picture img{
   width: 100%;
+  height: 100%;
   border-radius: 50%;
 }
 .user-left-content h3{
   font-size: 2rem;
   margin-top: 1rem;
+}
+
+.profile-pic-input{
+  width: 20rem;
+  height: 20rem;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.profile-pic-indicator{
+  width: 20rem;
+  overflow: hidden;
 }
 .user-right-content{
   width: 60%;

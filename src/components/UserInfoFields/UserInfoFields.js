@@ -4,29 +4,57 @@ import "./userInfoFields.css"
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 
-function UserInfoFields(){
-  const {user} = useContext(AuthContext);
+function UserInfoFields({selectedImage,user}){
+  const {userL} = useContext(AuthContext);
   const [newData , setNewData] = useState({});
   const navigate = useNavigate();
-  const updateUser = async()=>{
+  const [isLoading,setIsLoading] = useState(false);
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
+  const uploadImage = async (url,data)=>{
+    setIsLoading(true);
     try{
-      const res = await axios.put(`/users/${user._id}`, newData);
-      console.log(res.data);
+      
+      const res = await axios.post(url,data);
+      const res2 = await axios.put(`${origin}/users/${user._id}`, {"profilePic" : res.data.url}, {withCredentials : true});
+      
+    }catch(err){
+      throw err;
+    }
+    setIsLoading(false);
+  }
+  const preUploadImage = ()=>{
+    const formData = new FormData();
+    formData.append("file", selectedImage);
+    formData.append("upload_preset", "bookingUpload");
+    const url = "https://api.cloudinary.com/v1_1/imamdroubi/image/upload" ;
+    uploadImage(url,formData);
+  }
+  const updateUser = async()=>{
+    setIsLoading(true);
+    try{
+      
+      const res = await axios.put(`${origin}/users/${user._id}`, newData);
+      
     }catch(err){
       throw(err);
     }
+    setIsLoading(false);
   }
   const handleUpdate = ()=>{
     updateUser();
+    if(selectedImage){
+      preUploadImage();
+    }
+    
   }
   useEffect(()=>{
     if(user)setNewData(user);
     const link = window.location.href.split("/") ;
     const userId = link[link.length-1] ;
-    if(user && user._id !== userId){
+    if(user && userL && user._id !== userL._id){
       navigate(`/errors/notauth`);
     }
-  },[user])
+  },[user,userL])
   return(
     newData && <>
       <form className="user-info-form">
@@ -63,6 +91,7 @@ function UserInfoFields(){
           <input type="passwrod" ></input>
         </div> */}
       </form>
+      {isLoading?"Loading...":null}
       <div className="user-info-form-buttons">
         <button onClick={handleUpdate} className="save-changes-user-info">Save Changes</button>
         <button onClick={()=>setNewData(user)} className="cancel-changes-user-info">Cancel</button>

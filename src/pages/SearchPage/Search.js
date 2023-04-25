@@ -14,6 +14,7 @@ import { SearchContext } from "../../context/SearchContext";
 function Search(){
   const {user} = useContext(AuthContext);
   const {dates} = useContext(SearchContext);
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
   const [filters, setFilters] = useState({
     city:undefined,
     checkIn : undefined,
@@ -22,7 +23,7 @@ function Search(){
     maxPrice : undefined,
     persons:undefined
   });
-  const {data : hotels, loading , error, reFetch} = useFetch(`/hotels?destination=${filters.city}&min=${filters.minPrice}&max=${filters.maxPrice}`);
+  const {data : hotels, loading , error, reFetch} = useFetch(`${origin}/hotels?destination=${filters.city}&min=${filters.minPrice}&max=${filters.maxPrice}`);
   const navigate = useNavigate();
   // humburger stuff 
   const [windowSize , setWindowSize] = useState(window.innerWidth);

@@ -3,11 +3,12 @@ import useFetch from "../../hooks/useFetch";
 import "./adminPopups.css";
 import axios from "axios";
 function UpdateUserPopup({ setShow, userId }) {
-  const { data: user, loading, error, reFetch } = useFetch(`/users/${userId}`);
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
+  const { data: user, loading, error, reFetch } = useFetch(`${origin}/users/user/${userId}`);
   const [userData, setUserData] = useState();
   const updateData = async()=>{
     try{
-      const res = await axios.put(`/users/${userId}`, userData);
+      const res = await axios.put(`${origin}/users/${userId}`, userData);
       setShow(false);
     }catch(err){
       throw err;

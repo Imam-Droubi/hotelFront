@@ -5,13 +5,45 @@ function AddHotelPopup({setShow}){
   const [hotelData,setHotelData] = useState();
   const [showErr , setShowErr] = useState(false);
   const [errMessage, setErrMessage] = useState("Something is wrong, please check your information...");
-  const handleAdding = async()=>{
+  const [hotelImages,setHotelImages] = useState([]);
+  const [isLoading,setIsLoading] = useState(false);
+  const [imagesLinks,setImagesLinks] = useState([]);
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
+  const handlePhotoChange = (e)=>{
+    setHotelImages(e.target.files);
+  }
+  const preUploadImages = ()=>{
+    const url = "https://api.cloudinary.com/v1_1/imamdroubi/image/upload" ;
+    uploadImages(url,hotelImages);
+  }
+  const uploadImages = async(url,data)=>{
+    setIsLoading(true);
     try{
-      let res = await axios.post(`/hotels/` , hotelData)
+      const res = await Promise.all(Array.from(hotelImages).map(img=>{
+        const formData = new FormData();
+        formData.append("file" , img);
+        formData.append("upload_preset" , "bookingUpload");
+        return axios.post(url,formData).then(response=> response.data.url);
+      }))
+      const res2 = await axios.post(`${origin}/hotels/` , {...hotelData, "photos" : res});
+      setIsLoading(false);
+      setShow(false);
+    }catch(err){
+      setIsLoading(false);
+      throw err;
+    }
+  }
+  const handleAdding = async()=>{
+    setIsLoading(true);
+    try{
+      let res = await axios.post(`${origin}/hotels/` , hotelData)
+      if(!hotelImages)setShow(false);
+      setIsLoading(false);
       setShow(false);
     }catch(err){
       setErrMessage(err.response.message);
       setShowErr(true);
+      setIsLoading(false);
     }
   }
   const handleSubmitting = ()=>{
@@ -19,8 +51,13 @@ function AddHotelPopup({setShow}){
       setShowErr(true);
       return;
     }
-    handleAdding();
-
+    if(hotelImages){
+      preUploadImages();
+    }else{
+      handleAdding();
+    }
+    
+    
   }
   useEffect(()=>{
     setShowErr(false);
@@ -52,8 +89,9 @@ function AddHotelPopup({setShow}){
               <label>Hotel Description:</label>
               <textarea className="popup-form-input" id="desc" placeholder="Hotel Description..." cols="20" onChange={(e)=>setHotelData({...hotelData , desc : e.target.value})} ></textarea>
               <label>Photos*:</label>
-              <input className="popup-form-input" id="photos" type="file" multiple onChange={(e)=>setHotelData({...hotelData , photos : e.target.value})}></input>
+              <input className="popup-form-input" id="photos" type="file" multiple onChange={handlePhotoChange}></input>
               {showErr ? errMessage : null}
+              {isLoading? "Loading..." : null}
             </form>
           </div>
           <button onClick={handleSubmitting} className="pop-up-button">

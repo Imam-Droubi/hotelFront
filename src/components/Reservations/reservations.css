@@ -1,4 +1,6 @@
 .reservations-container{
+  animation-name: up;
+  animation-duration: 1s;
   width: 100%;
   display: flex;
   flex-direction: column;

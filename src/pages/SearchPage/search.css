@@ -9,6 +9,7 @@
   width: 20%;
   background-color: var(--clr-darkest);
   min-height: 100vh;
+  filter: drop-shadow(0.01rem 0.01rem 0.4rem var(--clr-darkest));
 
 }
 .search-page-side-bar-container{

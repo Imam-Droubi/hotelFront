@@ -6,7 +6,8 @@ import { FaEdit } from "react-icons/fa";
 import DeletionPopup from "../DeletionPopup/DeletionPopup";
 import UpdateHotelPopup from "../AdminPopups/UpdateHotelPopup";
 function HotelsTable({setChanged}) {
-  const {data:hotels, loading, error ,reFetch} = useFetch(`/hotels/`);
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
+  const {data:hotels, loading, error ,reFetch} = useFetch(`${origin}/hotels/`);
   const [showEditPopup, setShowEditPopup] = useState(false);
   const [showDeletionPopup, setShowDeletionPopup] = useState(false);
   const [PopupHotelId, setPopupHotelId] = useState();

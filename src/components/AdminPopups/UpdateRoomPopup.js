@@ -3,13 +3,14 @@ import "./adminPopups.css"
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 function UpdateRoomPopup({setShow,roomId}){
-  const { data: room, loading, error, reFetch } = useFetch(`/rooms/${roomId}`);
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
+  const { data: room, loading, error, reFetch } = useFetch(`${origin}/rooms/${roomId}`);
   const [roomData, setRoomData] = useState();
   const [showErr , setShowErr] = useState(false);
   const [errMessage, setErrMessage] = useState("Something is wrong, please check your information...");
   const updateData = async()=>{
     try{
-      const res = await axios.put(`/rooms/${roomId}`, roomData);
+      const res = await axios.put(`${origin}/rooms/${roomId}`, roomData);
       setShow(false);
     }catch(err){
       throw err;

@@ -7,7 +7,8 @@ import useFetch from "../../hooks/useFetch";
 import DeletionPopup from "../DeletionPopup/DeletionPopup";
 function Reservations(){
   const {user} = useContext(AuthContext);
-  const {data:reservations, error ,loading, reFetch} = useFetch(`/reservations/user/${user._id}`);
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
+  const {data:reservations, error ,loading, reFetch} = useFetch(`${origin}/reservations/user/${user._id}`);
   const navigate = useNavigate();
   const [choosedId , setChoosedId] = useState();
   const [showDeletionPopup , setShowDeletionPopup] = useState(false);

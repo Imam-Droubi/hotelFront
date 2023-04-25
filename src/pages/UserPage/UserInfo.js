@@ -6,20 +6,37 @@ import LoggedItems from "../../components/NavBar/LoggedItems"
 import Reservations from "../../components/Reservations/Reservations";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import useFetch from "../../hooks/useFetch";
+import axios from "axios";
 function UserInfo(){
   const link = window.location.href.split("/") ;
   const userId = link[link.length-1];
-  const {user} = useContext(AuthContext);
+  const {user:userL} = useContext(AuthContext);
+  const [user,setUser] = useState();
   const [showUserInfo , setShowUserInfo] = useState(true);
   const navigate = useNavigate();
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
+  const [selectedImage, setSelectedImage] = useState();
+  const handleSelect = (e)=>{
+    setSelectedImage(e.target.files[0]);
+  }
+  const getUser = async()=>{
+    try{
+      const res = await axios.get(`${origin}/users/user/${userId}`,{withCredentials : true});
+      setUser(res.data);
+    }catch(err){
+      throw err;
+    }
+  }
   useEffect(()=>{
-    if(!user)navigate("/login");
-    if(user && user._id !== userId){
+    if(!userL)navigate("/login");
+    if(!user)getUser();
+    if(user && userL && user._id !== userL._id){
       navigate("/errors/notauth");
     }
-  },[user])
+  },[user,userL])
   return(
-    user && <>
+    user && userL && <>
       <div className="user-page">
           <div className="user-page-top-bar">
             <div className="user-page-top-container">
@@ -34,6 +51,8 @@ function UserInfo(){
             <div className="user-left-content">
               <div className="user-profile-picture">
                 <img src={user.profilePic}></img>
+                <input className="profile-pic-input" type="file" onChange={(e)=>handleSelect(e)}/>
+                {selectedImage && <p className="profile-pic-indicator">{selectedImage.name}</p>}
               </div>
               <h3>{user.fullName}</h3>
             </div>
@@ -44,7 +63,7 @@ function UserInfo(){
               </div>
               <div className="user-right-content-content">
                 {showUserInfo ? 
-                <UserInfoFields />
+                <UserInfoFields user={user} selectedImage={selectedImage} />
                 :
                 <Reservations/>
               }

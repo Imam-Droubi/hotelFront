@@ -25,6 +25,8 @@
   font-weight: 600;
 }
 .main-form-input{
+  animation-name: up;
+  animation-duration: 1s;
   width: 45%;
   height: 4rem;
   border-radius: 1rem;

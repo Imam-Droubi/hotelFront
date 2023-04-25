@@ -84,6 +84,7 @@
   border: none;
   cursor: pointer;
   border-radius: 0.5rem;
+  filter: drop-shadow(2px 2px 5px var(--clr-grey));
 }
 .left-slider-button{
   left: 0;
@@ -100,6 +101,7 @@
   overflow: hidden;
   display: flex;
   justify-content: center;
+  /* filter: drop-shadow(2px 2px 5px var(--clr-grey)); */
 }
 
 .hotel-info-details{
@@ -127,6 +129,7 @@
   border-radius: 1rem;
   height: max-content;
   margin: 0 0 2rem 0;
+  filter: drop-shadow(2px 2px 5px var(--clr-grey));
 }
 .hotel-info-reserve-now-widget h3{
   font-size: 2rem;

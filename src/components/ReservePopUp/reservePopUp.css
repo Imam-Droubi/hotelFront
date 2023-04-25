@@ -51,6 +51,8 @@
   margin-bottom: 1rem;
 }
 .pop-up-room-container{
+  animation-name: up;
+  animation-duration: 1s;
   width: 100%;
   background-color: var(--clr-darker);
   color: white;

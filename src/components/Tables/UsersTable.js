@@ -6,7 +6,8 @@ import UpdateUserPopup from "../AdminPopups/UpdateUserPopup";
 import useFetch from "../../hooks/useFetch";
 import DeletionPopup from "../DeletionPopup/DeletionPopup";
 function UsersTable({ setChanged }) {
-  const { data: users, loading, error } = useFetch(`/users`);
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
+  const { data: users, loading, error } = useFetch(`${origin}/users/`);
   const [showEditPopup, setShowEditPopup] = useState(false);
   const [showDeletionPopup, setShowDeletionPopup] = useState(false);
   const [PopupUserId, setPopupUserId] = useState();
