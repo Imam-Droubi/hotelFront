@@ -14,7 +14,7 @@ function SignupForm(){
 
   const createUser = async ()=>{
     try{
-      const res = await axios.post(`${origin}/auth/register` , userData);
+      const res = await axios.post(`${origin}/auth/register` , userData, {withCredentials : true});
       dispatch({type : "LOGIN_START"});
         try{
           const loginData = {"email" : userData.email , "password" : userData.password} 

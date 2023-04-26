@@ -50,7 +50,7 @@ function AdminRooms(){
     if(!user || (isAdmin != null && !isAdmin) )navigate("/errors/notauth");
   },[user,isAdmin])
   return(
-    user &&<>
+    user &&isAdmin&&<>
     {showPopup && <AddRoomPopup setShow={setShowPopup}/>}
       <div className="admin-pages-container">
       {windowSize <= 992 && !menuShown?<AiOutlineMenu onClick={()=> showHumMenu()} className="humburger-controller"/> : null}

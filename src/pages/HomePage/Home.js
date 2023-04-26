@@ -16,12 +16,11 @@ function Home(){
       let res = await axios.get(`${origin}/users/check/${user._id}`, {withCredentials : true});
       if(res.data === "NO")setIsAdmin(false);
     }catch(err){
-      console.log(err);
       throw(err);
     }
   }
   useEffect(()=>{
-    checkAdmin();
+    user && checkAdmin();
   },[user])
   return(
     <>

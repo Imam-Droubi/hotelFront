@@ -51,7 +51,7 @@ function AdminHotels() {
     if (!user || (isAdmin != null && !isAdmin) ) navigate("/errors/notauth");
   }, [user,isAdmin]);
   return (
-    user && (
+    user && isAdmin && (
       <>
         {showPopup && <AddHotelPopup setShow={setShowPopup} />}
         <div className="admin-pages-container">

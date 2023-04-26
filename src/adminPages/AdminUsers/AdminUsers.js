@@ -39,7 +39,6 @@ function AdminUsers(){
       let res = await axios.get(`${origin}/users/check/${user._id}`, {withCredentials : true});
       if(res.data === "NO")setIsAdmin(false);
     }catch(err){
-      console.log(err);
       throw(err);
     }
   }
@@ -51,7 +50,7 @@ function AdminUsers(){
     if(!user || (isAdmin != null && !isAdmin)) navigate("/errors/notauth");
   },[user,isAdmin])
   return(
-    user &&  <>
+    user &&  isAdmin && <>
       <div className="admin-pages-container">
       {windowSize <= 992 && !menuShown?<AiOutlineMenu onClick={()=> showHumMenu()} className="humburger-controller"/> : null}
         <div className="admin-pages-sidebar">
