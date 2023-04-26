@@ -18,7 +18,7 @@ function AdminUsers(){
   const [windowSize , setWindowSize] = useState(window.innerWidth);
   const [menuShown , setMenuShown] = useState(false);
   const [showPopup , setShowPopup] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(null);
 
   const  showHumMenu = ()=>{
     setMenuShown(true);

@@ -17,7 +17,7 @@ function AdminHotels() {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const [menuShown, setMenuShown] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(null);
   const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
   const showHumMenu = () => {
     setMenuShown(true);

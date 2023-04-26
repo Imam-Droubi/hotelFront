@@ -1,14 +1,28 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../components/Logo/Logo";
 import Nav from "../../components/NavBar/Nav";
 import UserTop from "../../components/NavBar/UserTop";
 import "./home.css"
 import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
 function Home(){
   const {user} = useContext(AuthContext);
   const navigate = useNavigate();
   const items =["Login" , "Register"];
+  const [isAdmin,setIsAdmin] = useState(true);
+  const checkAdmin = async ()=>{
+    try{
+      let res = await axios.get(`${origin}/users/check/${user._id}`, {withCredentials : true});
+      if(res.data === "NO")setIsAdmin(false);
+    }catch(err){
+      console.log(err);
+      throw(err);
+    }
+  }
+  useEffect(()=>{
+    checkAdmin();
+  },[user])
   return(
     <>
     <div className="page">
@@ -16,7 +30,7 @@ function Home(){
       <div className="container">
         <div className="top">
           <Logo />
-          {user? <UserTop  items={[user.userName , "Logout"]} /> :<Nav items = {items}/>}
+          {user? <UserTop  items={[user.userName,isAdmin&&"Admin Panel", "Logout"]} /> :<Nav items = {items}/>}
         </div>
         <div className="main">
           <h1 className="hero-text">Feel Like Home...</h1>

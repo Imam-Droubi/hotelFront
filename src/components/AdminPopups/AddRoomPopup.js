@@ -9,7 +9,7 @@ function AddRoomPopup({setShow}){
   const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
   const handleAdding = async()=>{
     try{
-      let res = await axios.post(`${origin}/rooms/${roomData.hotelId}` , validDataForm)
+      let res = await axios.post(`${origin}/rooms/${roomData.hotelId}` , validDataForm, {withCredentials : true})
       setShow(false);
     }catch(err){
       setErrMessage(err.response.message? err.response.message : errMessage);

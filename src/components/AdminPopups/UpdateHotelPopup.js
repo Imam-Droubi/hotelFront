@@ -8,7 +8,7 @@ function UpdateHotelPopup({setShow,hotelId}){
   const [hotelData, setHotelData] = useState();
   const updateData = async()=>{
     try{
-      const res = await axios.put(`${origin}/hotels/${hotelId}`, hotelData);
+      const res = await axios.put(`${origin}/hotels/${hotelId}`, hotelData, {withCredentials : true});
       setShow(false);
     }catch(err){
       throw err;

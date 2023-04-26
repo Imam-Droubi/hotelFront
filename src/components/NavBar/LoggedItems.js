@@ -13,7 +13,9 @@ function LogedItems({ items }) {
               onClick={
                 item === "Logout"
                   ? () => dispatch({type:"LOGOUT"})
-                  : () => navigate(`/user/${user._id}`)
+                  : item === "Admin Panel" 
+                  ? ()=> navigate(`/admin/hotels`)
+                  :() => navigate(`/user/${user._id}`)
               }
             >
               {item}

@@ -36,7 +36,7 @@ function AddHotelPopup({setShow}){
   const handleAdding = async()=>{
     setIsLoading(true);
     try{
-      let res = await axios.post(`${origin}/hotels/` , hotelData)
+      let res = await axios.post(`${origin}/hotels/` , hotelData, {withCredentials : true})
       if(!hotelImages)setShow(false);
       setIsLoading(false);
       setShow(false);

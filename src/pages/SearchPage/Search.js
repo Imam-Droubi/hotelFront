@@ -71,7 +71,7 @@ function Search(){
               </>
               :
               <>
-              <HumburgerSearch menuShown = {menuShown} closeHumMenue = {closeHumMenue} setFilters = {setFilters}/>
+              <HumburgerSearch reFetch = {reFetch} filters = {filters} menuShown = {menuShown} closeHumMenue = {closeHumMenue} setFilters = {setFilters}/>
               </>
             }
             

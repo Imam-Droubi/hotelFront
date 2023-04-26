@@ -8,7 +8,7 @@ function UpdateUserPopup({ setShow, userId }) {
   const [userData, setUserData] = useState();
   const updateData = async()=>{
     try{
-      const res = await axios.put(`${origin}/users/${userId}`, userData);
+      const res = await axios.put(`${origin}/users/${userId}`, userData, {withCredentials : true});
       setShow(false);
     }catch(err){
       throw err;

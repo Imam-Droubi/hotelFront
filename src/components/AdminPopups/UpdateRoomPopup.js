@@ -10,7 +10,7 @@ function UpdateRoomPopup({setShow,roomId}){
   const [errMessage, setErrMessage] = useState("Something is wrong, please check your information...");
   const updateData = async()=>{
     try{
-      const res = await axios.put(`${origin}/rooms/${roomId}`, roomData);
+      const res = await axios.put(`${origin}/rooms/${roomId}`, roomData, {withCredentials : true});
       setShow(false);
     }catch(err){
       throw err;

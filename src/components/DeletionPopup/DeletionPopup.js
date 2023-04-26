@@ -7,9 +7,9 @@ function DeletionPopup(props){
     try{
       let res ;
       if(props.hotelId){
-        res = await axios.delete(`${origin}/${url}/${props.elementId}/${props.hotelId}`);
+        res = await axios.delete(`${origin}/${url}/${props.elementId}/${props.hotelId}`, {withCredentials : true});
       }else{
-        res = await axios.delete(`${origin}/${url}/${props.elementId}`);
+        res = await axios.delete(`${origin}/${url}/${props.elementId}`, {withCredentials : true});
       }
       props.setShow(false);
     }catch(err){

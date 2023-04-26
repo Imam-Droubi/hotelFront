@@ -8,7 +8,7 @@ function AddUserPopup({ setShow }) {
   const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
   const handleAdding = async()=>{
     try{
-      let res = await axios.post(`${origin}/auth/register` , userData)
+      let res = await axios.post(`${origin}/auth/register` , userData, {withCredentials : true})
       setShow(false);
     }catch(err){
       setErrMessage(err.response.message);
