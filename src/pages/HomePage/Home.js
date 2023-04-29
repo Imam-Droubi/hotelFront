@@ -8,13 +8,15 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 function Home(){
   const {user} = useContext(AuthContext);
+  const [origin] = useState(process.env.REACT_APP_ROOT_ORIGIN);
   const navigate = useNavigate();
   const items =["Login" , "Register"];
-  const [isAdmin,setIsAdmin] = useState(true);
+  const [isAdmin,setIsAdmin] = useState(null);
   const checkAdmin = async ()=>{
     try{
       let res = await axios.get(`${origin}/users/check/${user._id}`, {withCredentials : true});
       if(res.data === "NO")setIsAdmin(false);
+      else setIsAdmin(true);
     }catch(err){
       throw(err);
     }
@@ -29,7 +31,7 @@ function Home(){
       <div className="container">
         <div className="top">
           <Logo />
-          {user? <UserTop  items={[user.userName,isAdmin&&"Admin Panel", "Logout"]} /> :<Nav items = {items}/>}
+          {user? <UserTop  items={[user.userName,isAdmin?"Admin Panel":null, "Logout"]} /> :<Nav items = {items}/>}
         </div>
         <div className="main">
           <h1 className="hero-text">Feel Like Home...</h1>

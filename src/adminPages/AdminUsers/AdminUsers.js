@@ -38,6 +38,7 @@ function AdminUsers(){
     try{
       let res = await axios.get(`${origin}/users/check/${user._id}`, {withCredentials : true});
       if(res.data === "NO")setIsAdmin(false);
+      else setIsAdmin(true);
     }catch(err){
       throw(err);
     }

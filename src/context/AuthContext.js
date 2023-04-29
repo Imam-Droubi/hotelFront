@@ -30,6 +30,7 @@ const AuthReducer = (state, action) => {
         error: action.payload,
       };
     case "LOGOUT":
+      localStorage.removeItem("user");
       return {
         user: null,
         loading: false,
