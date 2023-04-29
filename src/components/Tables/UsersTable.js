@@ -86,7 +86,7 @@ function UsersTable({ setChanged }) {
           elementId={PopupUserId}
           setShow={setShowDeletionPopup}
           message={"Are you sure you want to delete this user"}
-          deletionUrl = {`/users`}
+          deletionUrl = {`users`}
         />
       ) : null}
     </>

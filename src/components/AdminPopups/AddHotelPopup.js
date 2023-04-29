@@ -25,7 +25,7 @@ function AddHotelPopup({setShow}){
         formData.append("upload_preset" , "bookingUpload");
         return axios.post(url,formData).then(response=> response.data.url);
       }))
-      const res2 = await axios.post(`${origin}/hotels/` , {...hotelData, "photos" : res});
+      const res2 = await axios.post(`${origin}/hotels/` , {...hotelData, "photos" : res}, {withCredentials : true});
       setIsLoading(false);
       setShow(false);
     }catch(err){

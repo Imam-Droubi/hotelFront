@@ -44,7 +44,7 @@ function Reservations(){
           elementId={choosedId}
           setShow={setShowDeletionPopup}
           message={"Are you sure you want to cancel this reservation?"}
-          deletionUrl = {`/reservations`}
+          deletionUrl = {`reservations`}
         />
       ) : null}
         

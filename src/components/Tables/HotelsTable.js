@@ -84,7 +84,7 @@ function HotelsTable({setChanged}) {
           elementId={PopupHotelId}
           setShow={setShowDeletionPopup}
           message={"Are you sure you want to delete this hotel"}
-          deletionUrl = {`/hotels`}
+          deletionUrl = {`hotels`}
         />
       ) : null}
     </>
